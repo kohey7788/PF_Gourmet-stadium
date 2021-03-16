@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  visitor_id: 1
+  stadium_id: 1
+  image_id: MyString
+  name: 
+
+two:
+  visitor_id: 1
+  stadium_id: 1
+  image_id: MyString
+  name: 

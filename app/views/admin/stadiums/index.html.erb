@@ -1,0 +1,10 @@
+<table>
+  <% @stadiums.each do |stadium| %>
+  <tr>
+    <td><%= stadium.name %></td>
+    <td><%= stadium.address %></td>
+    <td><%= link_to "詳細画面へ", admin_stadium_path(stadium) %></td>
+  </tr>
+  <% end %>
+</table>
+<%= link_to "スタジアムを追加する", new_admin_stadium_path %>
