@@ -1,4 +1,4 @@
 class Gourmet < ApplicationRecord
-  belong_to :stadium
-  belong_to :visitor
+  belongs_to :stadium
+  belongs_to :visitor
 end

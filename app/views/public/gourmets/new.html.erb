@@ -1,0 +1,26 @@
+<%= form_with model: [ :public, @gourmet ], url: gourmets_path, local:true do |f| %>
+  <div class="field">
+    <%= f.label :"スタジアム" %>
+    <%= f.collection_select(:stadium_id, @stadiums, :id, :name, {prompt: "スタジアムを選択"}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"商品名" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"商品紹介" %>
+    <%= f.text_area :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"画像" %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
