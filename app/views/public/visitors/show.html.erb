@@ -1,0 +1,10 @@
+<%= @visitor.name %>
+<% if @visitor.gender == false %>
+  男性
+<% else %>
+  女性
+<% end %>
+<%= @visitor.age %>
+<%= @visitor.favorite_food %>
+<%= @visitor.introduction %>
+<%= link_to "編集画面へ", edit_visitor_path(@visitor) %>

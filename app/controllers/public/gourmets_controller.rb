@@ -26,6 +26,6 @@ class Public::GourmetsController < ApplicationController
 
   private
   def gourmet_params
-    params.require(:gourmet).permit(:stadium, :name ,:introduction, :image)
+    params.require(:gourmet).permit(:stadium_id, :name ,:introduction, :image)
   end
 end

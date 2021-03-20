@@ -8,10 +8,10 @@
     </tr>
   </thead>
   <tbody>
-    <%= @gourmets.each do |gourmet| %>
+    <% @gourmets.each do |gourmet| %>
     <tr>
       <td><%= link_to gourmet.name, gourmet_path(gourmet) %></td>
-      <td><%= gourmet.image %></td>
+      <!--<td><= gourmet.image %></td>-->
       <td><%= gourmet.stadium.name %></td>
     </tr>
     <% end %>

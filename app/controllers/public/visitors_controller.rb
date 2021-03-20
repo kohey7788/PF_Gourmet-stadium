@@ -10,6 +10,7 @@ class Public::VisitorsController < ApplicationController
   def update
     @visitor = Visitor.find(params[:id])
     @visitor.update(visitor_params)
+    redirect_to visitor_path(@visitor)
   end
 
   private

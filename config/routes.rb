@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
    resources :gourmets, except: [:edit, :update]
-   resources :visitors, only: [:show,:edit, :update]
+   resources :visitors, only: [:show, :edit, :update]
   end
 
 end
