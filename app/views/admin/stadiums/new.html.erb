@@ -1,5 +1,5 @@
-<%= form_with model:stadium, local:true do |f| %>
-<div class="field">
+<%= form_with model:[ :admin, @stadium ], local:true do |f| %>
+  <div class="field">
     <%= f.label :"名称" %>
     <%= f.text_field :name %>
   </div>
@@ -11,7 +11,7 @@
 
   <div class="field">
     <%= f.label :"画像" %>
-    <%= f.attachment_field :image %>
+    <%= f.file_field :image %>
   </div>
 
   <div class="actions">

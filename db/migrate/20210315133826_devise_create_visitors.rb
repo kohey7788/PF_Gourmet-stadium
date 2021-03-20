@@ -32,6 +32,11 @@ class DeviseCreateVisitors < ActiveRecord::Migration[5.2]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
+      t.string :name,          null: false
+      t.boolean :gender,       null: false,  default: false
+      t.string :age,           null: false
+      t.string :favorite_food
+      t.text :introduction
 
       t.timestamps null: false
     end
