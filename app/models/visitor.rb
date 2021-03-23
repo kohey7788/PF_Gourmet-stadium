@@ -6,5 +6,15 @@ class Visitor < ApplicationRecord
 
   has_many :gourmets,dependent: :destroy
   has_many :gourmet_comments,dependent: :destroy
-  has_many :favorite,dependent: :destroy
+  has_many :favorites,dependent: :destroy
+
+  enum age:{
+    teenagers:   0, #10代
+    twenties:    1, #20代
+    thirties:    2, #30代
+    forties:     3, #40代
+    fifties:     4, #50代
+    sixties:     5, #60代
+    seventies:   6, #70代
+  }
 end

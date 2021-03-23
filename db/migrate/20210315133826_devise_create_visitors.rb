@@ -34,7 +34,7 @@ class DeviseCreateVisitors < ActiveRecord::Migration[5.2]
 
       t.string :name,          null: false
       t.boolean :gender,       null: false,  default: false
-      t.string :age,           null: false
+      t.integer :age,           null: false, default: 0
       t.string :favorite_food
       t.text :introduction
 

@@ -17,6 +17,7 @@ class Public::GourmetsController < ApplicationController
 
   def show
     @gourmet = Gourmet.find(params[:id])
+    @gourmet_comment = GourmetComment.new
   end
 
   def destroy

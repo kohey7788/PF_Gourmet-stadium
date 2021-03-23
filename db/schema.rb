@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_20_092654) do
+ActiveRecord::Schema.define(version: 2021_03_21_125201) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,8 +32,11 @@ ActiveRecord::Schema.define(version: 2021_03_20_092654) do
   end
 
   create_table "gourmet_comments", force: :cascade do |t|
+    t.integer "visitor_id"
+    t.integer "gourmet_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "comment"
   end
 
   create_table "gourmets", force: :cascade do |t|
@@ -43,14 +46,6 @@ ActiveRecord::Schema.define(version: 2021_03_20_092654) do
     t.string "image_id"
     t.string "favorite_food"
     t.text "introduction"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "stadia", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -71,7 +66,7 @@ ActiveRecord::Schema.define(version: 2021_03_20_092654) do
     t.datetime "remember_created_at"
     t.string "name", null: false
     t.boolean "gender", default: false, null: false
-    t.string "age", null: false
+    t.integer "age", default: 0, null: false
     t.string "favorite_food"
     t.text "introduction"
     t.datetime "created_at", null: false

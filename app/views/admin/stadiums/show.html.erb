@@ -1,6 +1,6 @@
 <%= @stadium.name %>
 <%= @stadium.address %>
-<>
+<%= attachment_image_tag @stadium, :image, format: "jpg" %>
 
 <%= link_to "一覧画面へ" , admin_stadiums_path %>
 <%= link_to "編集画面へ", edit_admin_stadium_path(@stadium) %>

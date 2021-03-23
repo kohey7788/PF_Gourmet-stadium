@@ -11,7 +11,7 @@
     <% @gourmets.each do |gourmet| %>
     <tr>
       <td><%= link_to gourmet.name, gourmet_path(gourmet) %></td>
-      <!--<td><= gourmet.image %></td>-->
+      <td><%= attachment_image_tag gourmet, :image, format: "jpg" %></td>
       <td><%= gourmet.stadium.name %></td>
     </tr>
     <% end %>

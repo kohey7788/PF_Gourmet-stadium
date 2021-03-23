@@ -1,0 +1,4 @@
+<% @visitors.each do |visitor| %>
+<%= link_to visitor.name, admin_visitor_path(visitor) %>
+<%= visitor.gender %>
+<% end %>

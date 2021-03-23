@@ -20,6 +20,16 @@
       <li class=“nav-item”>
         <%= link_to "グルメ一覧", gourmets_path, class: 'mr-5 nav-link btn btn-outline-secondary' %>
       </li>
+      <li class=“nav-item”>
+        <%= link_to "ログアウト", destroy_visitor_session_path, method: :delete, class: 'mr-5 nav-link btn btn-outline-secondary' %>
+      </li>
+    <% else %>
+      <li class=“nav-item”>
+        <%= link_to "新規登録", new_visitor_registration_path, class: 'mr-5 nav-link btn btn-outline-secondary' %>
+      </li>
+       <li class=“nav-item”>
+        <%= link_to "ログイン", new_visitor_session_path, class: 'mr-5 nav-link btn btn-outline-secondary' %>
+      </li>
     <% end %>
     <%= yield %>
   </body>

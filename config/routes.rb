@@ -21,8 +21,12 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-   resources :gourmets, except: [:edit, :update]
+    resources :gourmets, except: [:edit, :update] do
+      resources :gourmet_comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
+    end
    resources :visitors, only: [:show, :edit, :update]
+
   end
 
 end

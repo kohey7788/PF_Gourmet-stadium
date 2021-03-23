@@ -7,5 +7,9 @@ class Public::FavoritesController < ApplicationController
   end
 
   def destroy
+    gourmet = Gourmet.find(params[:gourmet_id])
+    favorite = current_visitor.favorites.find_by(gourmet_id: gourmet.id)
+    favorite.destroy
+    redirect_to gourmet_path(gourmet)
   end
 end
