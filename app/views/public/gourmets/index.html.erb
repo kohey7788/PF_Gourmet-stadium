@@ -1,5 +1,5 @@
 <h1>グルメ一覧</h1>
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>商品名</th>
@@ -11,7 +11,7 @@
     <% @gourmets.each do |gourmet| %>
     <tr>
       <td><%= link_to gourmet.name, gourmet_path(gourmet) %></td>
-      <td><%= attachment_image_tag gourmet, :image, format: "jpg" %></td>
+      <td><%= attachment_image_tag gourmet, :image, format: "jpg", size: "350x200" %></td>
       <td><%= gourmet.stadium.name %></td>
     </tr>
     <% end %>

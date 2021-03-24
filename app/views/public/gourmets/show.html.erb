@@ -1,9 +1,10 @@
-<h2>グルメ詳細</h2>
-<h3><%= @gourmet.name %></h3>
-<%= @gourmet.stadium.name %>
-<%= attachment_image_tag @gourmet, :image, format: "jpg" %>
-<%= @gourmet.introduction %>
-<% if @gourmet.favorited_by?(current_visitor) %>
+<div class="container">
+   <h2><%= @gourmet.name %></h2>
+  <div class="row">
+    <%= attachment_image_tag @gourmet, :image, format: "jpg" %>
+    <%= @gourmet.introduction %>
+    <%= @gourmet.stadium.name %>
+    <% if @gourmet.favorited_by?(current_visitor) %>
     <p>
       <%= link_to gourmet_favorites_path(@gourmet), method: :delete do %>
         ♥<%= @gourmet.favorites.count %> いいね
@@ -15,20 +16,24 @@
         ♡<%= @gourmet.favorites.count %> いいね
       <% end %>
     </p>
-  <% end %>
-
-  <div class="comments">
-  <p>コメント件数：<%= @gourmet.gourmet_comments.count %></p>
-  <% @gourmet.gourmet_comments.each do |gourmet_comment| %>
-  <!--<p><= image_tag('sample-author1.jpg') %></p>-->
-  <%= gourmet_comment.visitor.name %>
-  <%= gourmet_comment.created_at.strftime('%Y/%m/%d') %><%= gourmet_comment.comment %>
-  <% end %>
+    <% end %>
   </div>
-
-  <div class="new-comment">
-  <%= form_with(model: @gourmet_comment, url:  gourmet_gourmet_comments_path(@gourmet.id), local: true) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-  <%= f.submit "送信する" %>
-  <% end %>
+  <div class="row">
+    <%= form_with(model: @gourmet_comment, url:  gourmet_gourmet_comments_path(@gourmet.id), local: true) do |f| %>
+    <%= f.text_area :comment, cols: '60',rows:'5',placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+    <% end %>
   </div>
+  <div class="row">
+    <p>コメント件数：<%= @gourmet.gourmet_comments.count %></p>
+    <table class="table">
+      <% @gourmet.gourmet_comments.each do |gourmet_comment| %>
+        <tr>
+          <td><%= gourmet_comment.created_at.strftime('%Y/%m/%d') %></td>
+          <td><%= gourmet_comment.visitor.name %></td>
+          <td><%= gourmet_comment.comment %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

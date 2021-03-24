@@ -1,32 +1,30 @@
 <%= form_with model: [ :public, @visitor ], url: visitor_path, local:true do |f| %>
-  <div class="field">
-    <%= f.label :"名前" %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"性別" %>
-    <label><%= f.radio_button :gender, "false" %>男性</label>
-    <label><%= f.radio_button :gender, "true" %>女性</label>
-  </div>
-
-  <div class="field">
-    <%= f.label :"年齢" %>
-    <%= f.select :age, Visitor.ages.keys.map {|k| [I18n.t("enums.visitor.age.#{k}"), k]}, prompt: "年齢を選択してください" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"推し飯" %>
-    <%= f.text_field :favorite_food %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"自己紹介" %>
-    <%= f.text_area :introduction %>
-  </div>
-
+  <table class="table">
+    <tr>
+      <th><%= f.label :"名前" %></th>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :"性別" %></th>
+      <td>
+        <label><%= f.radio_button :gender, "false" %>男性</label>
+        <label><%= f.radio_button :gender, "true" %>女性</label>
+      </td>
+    </tr>
+    <tr>
+      <th><%= f.label :"年齢" %></th>
+      <td><%= f.select :age, Visitor.ages.keys.map {|k| [I18n.t("enums.visitor.age.#{k}"), k]}, prompt: "年齢を選択してください" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :"推し飯" %></th>
+      <td><%= f.text_field :favorite_food %></td>
+    </tr>
+    <tr>
+      <th> <%= f.label :"自己紹介" %></th>
+      <td><%= f.text_area :introduction %></td>
+    </tr>
+  </table>
   <div class="actions">
     <%= f.submit %>
   </div>
-
 <% end %>
