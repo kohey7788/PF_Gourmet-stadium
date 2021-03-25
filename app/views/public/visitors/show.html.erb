@@ -1,10 +1,29 @@
-<%= @visitor.name %>
-<% if @visitor.gender == false %>
-  男性
-<% else %>
-  女性
-<% end %>
-<%= @visitor.age_i18n %>
-<%= @visitor.favorite_food %>
-<%= @visitor.introduction %>
-<%= link_to "編集画面へ", edit_visitor_path(@visitor) %>
+<table class="table">
+  <tr>
+    <th>名前</th>
+    <td><%= @visitor.name %></td>
+  </tr>
+  <tr>
+    <th>性別</th>
+    <td>
+      <% if @visitor.gender == false %>
+      男性
+      <% else %>
+      女性
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>年齢</th>
+    <td><%= @visitor.age_i18n %></td>
+  </tr>
+  <tr>
+    <th>推し飯</th>
+    <td><%= @visitor.favorite_food %></td>
+  </tr>
+  <tr>
+    <th>自己紹介</th>
+    <td><%= @visitor.introduction %></td>
+  </tr>
+</table>
+<%= link_to "編集画面へ", edit_visitor_path(@visitor), class: "btn btn-success" %>

@@ -1,7 +1,7 @@
 <div class="container">
+  <%= form_with model: [ :public, @gourmet ], url: gourmets_path, local:true do |f| %>
   <div class="row">
     <div class="col-md-10">
-      <%= form_with model: [ :public, @gourmet ], url: gourmets_path, local:true do |f| %>
       <table class="table table-borderless">
         <tr>
           <th><%= f.label :"スタジアム" %></th>
@@ -25,5 +25,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+  <% end %>
 </div>
-<% end %>
