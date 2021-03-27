@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2021_03_21_125201) do
     t.string "image_id"
     t.string "favorite_food"
     t.text "introduction"
+    t.integer "favorites_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

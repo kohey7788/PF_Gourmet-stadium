@@ -13,7 +13,7 @@
         </tr>
          <tr>
           <th><%= f.label :"商品紹介" %></th>
-          <td><%= f.text_area :address %></td>
+          <td><%= f.text_area :introduction, cols: '60',rows:'5' %></td>
         </tr>
          <tr>
           <th><%= f.label :"画像" %></th>
@@ -23,7 +23,7 @@
     </div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-success"%>
   </div>
   <% end %>
 </div>

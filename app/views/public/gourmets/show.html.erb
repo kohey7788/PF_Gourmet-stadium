@@ -1,24 +1,31 @@
 <div class="container">
-   <h2><%= @gourmet.name %></h2>
+  <h2><%= @gourmet.name %></h2>
   <div class="row">
-    <%= attachment_image_tag @gourmet, :image, format: "jpg" %>
-    <%= @gourmet.introduction %>
-    <%= @gourmet.stadium.name %>
-    <% if @gourmet.favorited_by?(current_visitor) %>
-    <p>
-      <%= link_to gourmet_favorites_path(@gourmet), method: :delete do %>
-        ♥<%= @gourmet.favorites.count %> いいね
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to gourmet_favorites_path(@gourmet), method: :post do %>
-        ♡<%= @gourmet.favorites.count %> いいね
-      <% end %>
-    </p>
-    <% end %>
+    <table class="table table-borderless">
+      <tr>
+        <td><%= attachment_image_tag @gourmet, :image, format: "jpg" %></td>
+        <td><%= @gourmet.introduction %></td>
+
+        <td>
+          <% if @gourmet.favorited_by?(current_visitor) %>
+            <p>
+              <%= link_to gourmet_favorites_path(@gourmet), method: :delete do %>
+                ♥<%= @gourmet.favorites.count %> いいね
+              <% end %>
+            </p>
+            <% else %>
+            <p>
+              <%= link_to gourmet_favorites_path(@gourmet), method: :post do %>
+                ♡<%= @gourmet.favorites.count %> いいね
+              <% end %>
+            </p>
+          <% end %>
+          <%= @gourmet.stadium.name %>
+        </td>
+      </tr>
+    </table>
   </div>
-  <div class="row">
+  <div class="row mt-5">
     <%= form_with(model: @gourmet_comment, url:  gourmet_gourmet_comments_path(@gourmet.id), local: true) do |f| %>
     <%= f.text_area :comment, cols: '60',rows:'5',placeholder: "コメントをここに" %>
     <%= f.submit "送信する" %>

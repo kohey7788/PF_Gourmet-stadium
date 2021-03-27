@@ -1,21 +1,37 @@
-<h1>グルメ一覧</h1>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>商品名</th>
-      <th>写真</th>
-      <th>スタジアム</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @gourmets.each do |gourmet| %>
-    <tr>
-      <td><%= link_to gourmet.name, gourmet_path(gourmet) %></td>
-      <td><%= attachment_image_tag gourmet, :image, format: "jpg", size: "350x200" %></td>
-      <td><%= gourmet.stadium.name %></td>
-    </tr>
+<div class="container">
+  <div class="row">
+    <%= search_form_for @q do |f| %>
+    <%= f.label :name, "Keyword" %>
+    <%= f.search_field :name_cont %>
+    <%= f.label :stadium, "スタジアム" %>
+    <%= f.collection_select :stadium_id_eq, @stadiums, :id, :name, :include_blank => '指定なし' %>
+    <%= f.select(:sorts, {'liks': "favorites_count desc",'新着順': "created_at desc"}) %>
+    <%= f.submit "検索" %>
     <% end %>
-  </tbody>
+  </div>
 
-</table>
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>写真</th>
+            <th>いいね</th>
+            <th>スタジアム</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @gourmets.each do |gourmet| %>
+          <tr>
+            <td><%= link_to gourmet.name, gourmet_path(gourmet) %></td>
+            <td><%= attachment_image_tag gourmet, :image, format: "jpg", size: "350x200" %></td>
+            <td>♥<%= gourmet.favorites.count %></td>
+            <td><%= gourmet.stadium.name %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

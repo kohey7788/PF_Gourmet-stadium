@@ -7,7 +7,7 @@ class CreateGourmets < ActiveRecord::Migration[5.2]
       t.string :image_id
       t.string :favorite_food
       t.text :introduction
-
+      t.integer :favorites_count, default: 0
       t.timestamps
     end
   end
