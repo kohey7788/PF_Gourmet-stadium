@@ -6,4 +6,9 @@ class Admin::GourmetsController < ApplicationController
   def show
     @gourmet = Gourmet.find(params[:id])
   end
+
+  def destroy
+    @gourmet = Gormet.find(params[:id])
+    @gourmet.destroy
+  end
 end

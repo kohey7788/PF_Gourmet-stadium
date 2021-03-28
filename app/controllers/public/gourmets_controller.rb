@@ -7,8 +7,11 @@ class Public::GourmetsController < ApplicationController
   def create
     @gourmet = Gourmet.new(gourmet_params)
     @gourmet.visitor = current_visitor
-    @gourmet.save
-    redirect_to gourmets_path
+    if @gourmet.save
+      redirect_to gourmets_path
+    else
+      render "new"
+    end
   end
 
   def index

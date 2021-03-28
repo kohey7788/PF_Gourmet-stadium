@@ -1,10 +1,27 @@
-<table class="table">
-  <% @stadiums.each do |stadium| %>
-  <tr>
-    <td><%= stadium.name %></td>
-    <td><%= stadium.address %></td>
-    <td><%= link_to "詳細画面へ", admin_stadium_path(stadium) %></td>
-  </tr>
-  <% end %>
-</table>
-<%= link_to "スタジアムを追加する", new_admin_stadium_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-1">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>スタジアム名</th>
+          <th>住所</th>
+          <th>詳細</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @stadiums.each do |stadium| %>
+        <tr>
+          <td><%= stadium.name %></td>
+          <td><%= stadium.address %></td>
+          <td><%= link_to "詳細画面へ", admin_stadium_path(stadium) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <div class="row">
+    <%= link_to "スタジアムを追加する", new_admin_stadium_path, class: "btn btn-success" %>
+  </div>
+</div>

@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :stadiums
     resources :visitors, only: [:index, :show]
-    resources :gourmets, only: [:index, :show]
+    resources :gourmets, only: [:index, :show] do
+      resources :gourmet_comments, only: [:destroy]
+    end
   end
 
   scope module: :public do

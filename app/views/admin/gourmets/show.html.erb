@@ -1,0 +1,30 @@
+<div class="container">
+  <h2><%= @gourmet.name %></h2>
+  <div class="row">
+    <table class="table table-borderless">
+      <tr>
+        <td><%= attachment_image_tag @gourmet, :image, format: "jpg" %></td>
+        <td><%= @gourmet.introduction %></td>
+
+        <td>
+          <%= @gourmet.favorites.count %> いいね</br>
+          <%= @gourmet.stadium.name %>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="row">
+    <p>コメント件数：<%= @gourmet.gourmet_comments.count %></p>
+    <table class="table">
+      <% @gourmet.gourmet_comments.each do |gourmet_comment| %>
+        <tr>
+          <td><%= gourmet_comment.created_at.strftime('%Y/%m/%d') %></td>
+          <td><%= link_to gourmet_comment.visitor.name, admin_visitor_path(gourmet_comment.visitor) %></td>
+          <td><%= gourmet_comment.comment %></td>
+          <td><%= link_to '削除する', admin_gourmet_gourmet_comment_path(gourmet_comment.gourmet, gourmet_comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger"%></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

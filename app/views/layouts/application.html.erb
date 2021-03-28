@@ -11,35 +11,38 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark">
-        <ul class=“navbar-nav”>
+      <nav class="navbar navbar-expand-lg  bg-dark">
+        <%= link_to "ぐるスタ", root_path, class: "navbar-brand text-white mr-5" %>
+        <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
           <% if visitor_signed_in? %>
             <li class=“nav-item”>
-              <%= link_to "マイページ", visitor_path(current_visitor), class: 'mr-5 nav-link btn btn-outline-secondary' %>
+              <%= link_to "マイページ", visitor_path(current_visitor), class: 'mr-5 ml-5 nav-link btn btn-outline-secondary text-white' %>
             </li>
             <li class=“nav-item”>
-              <%= link_to "新規投稿", new_gourmet_path, class: 'mr-5 nav-link btn btn-outline-secondary' %>
+              <%= link_to "新規投稿", new_gourmet_path, class: 'mr-5 nav-link btn btn-outline-secondary text-white' %>
             </li>
             <li class=“nav-item”>
-              <%= link_to "グルメ一覧", gourmets_path, class: 'mr-5 nav-link btn btn-outline-secondary' %>
+              <%= link_to "グルメ一覧", gourmets_path, class: 'mr-5 nav-link btn btn-outline-secondary text-white' %>
             </li>
             <li class=“nav-item”>
-              <%= link_to "ログアウト", destroy_visitor_session_path, method: :delete, class: 'mr-5 nav-link btn btn-outline-secondary' %>
+              <%= link_to "ログアウト", destroy_visitor_session_path, method: :delete, class: 'mr-5 nav-link btn btn-outline-secondary text-white' %>
             </li>
           <% else %>
             <li class=“nav-item”>
-              <%= link_to "新規登録", new_visitor_registration_path, class: 'mr-5 nav-link btn btn-outline-secondary' %>
+              <%= link_to "新規登録", new_visitor_registration_path, class: 'mr-5 nav-link btn btn-outline-secondary text-white' %>
             </li>
              <li class=“nav-item”>
-              <%= link_to "ログイン", new_visitor_session_path, class: 'mr-5 nav-link btn btn-outline-secondary' %>
+              <%= link_to "ログイン", new_visitor_session_path, class: 'mr-5 nav-link btn btn-outline-secondary text-white' %>
             </li>
           <% end %>
         </ul>
+        </div>
       </nav>
     </header>
-    <!--<div class="d-flex justify-content-around collapse navbar-collapse">-->
+    <div class="bg-main">
+      <%= yield %>
+    </div>
 
-    <!--</div>-->
-    <%= yield %>
   </body>
 </html>

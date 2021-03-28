@@ -1,2 +1,23 @@
-<% @gourmets.each do |gourmet| %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>商品写真</th>
+          <th>スタジアム</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @gourmets.each do |gourmet| %>
+        <tr>
+          <td><%= link_to gourmet.name, admin_gourmet_path(gourmet) %></td>
+          <td><%= attachment_image_tag gourmet, :image, format: "jpg", size: "350x200" %></td>
+          <td><%= gourmet.stadium.name %></td>
+        </tr>
+        <% end %>
+      </tbody>
+
+    </table>
+  </div>
+</div>

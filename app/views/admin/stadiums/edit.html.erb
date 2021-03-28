@@ -1,20 +1,26 @@
-<%= form_with model:[ :admin, @stadium ], local:true do |f| %>
-<div class="field">
-    <%= f.label :"名称" %>
-    <%= f.text_field :name %>
+<div class="container">
+  <%= form_with model:[ :admin, @stadium ], local:true do |f| %>
+  <div class="row">
+    <table class="table">
+      <tr>
+        <th><%= f.label :"名称" %></th>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :"住所" %></th>
+        <td><%= f.text_area :address %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :"画像" %></th>
+        <td><%= attachment_image_tag @stadium, :image, format: "jpg", size: "350x200" %></td>
+      </tr>
+    </table>
   </div>
+  <div class="row">
+    <%= f.submit class: "btn btn-success" %>
+  </div>
+  <% end %>
+</div>
 
-  <div class="field">
-    <%= f.label :"住所" %>
-    <%= f.text_area :address %>
-  </div>
 
-  <div class="field">
-    <%= f.label :"画像" %>
-    <%= f.file_field :image %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
