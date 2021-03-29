@@ -1,12 +1,12 @@
-<div class="container">
+<div class="container pt-5">
   <h2><%= @gourmet.name %></h2>
   <div class="row">
     <table class="table table-borderless">
       <tr>
-        <td><%= attachment_image_tag @gourmet, :image, format: "jpg" %></td>
-        <td><%= @gourmet.introduction %></td>
+        <td><%= attachment_image_tag @gourmet, :image, format: "jpg", size: "350x200" %></td>
+        <td class="border bg-light"><%= @gourmet.introduction %></td>
 
-        <td>
+        <td class="bg-light">
           <% if @gourmet.favorited_by?(current_visitor) %>
             <p>
               <%= link_to gourmet_favorites_path(@gourmet), method: :delete do %>
@@ -33,6 +33,8 @@
   </div>
   <div class="row">
     <p>コメント件数：<%= @gourmet.gourmet_comments.count %></p>
+  </div>
+  <div class="row bg-light">
     <table class="table">
       <% @gourmet.gourmet_comments.each do |gourmet_comment| %>
         <tr>

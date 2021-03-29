@@ -42,6 +42,6 @@ class Admin::StadiumsController < ApplicationController
   private
 
   def stadium_params
-    params.require(:stadium).permit(:name, :address, :image_id)
+    params.require(:stadium).permit(:name, :address, :image)
   end
 end

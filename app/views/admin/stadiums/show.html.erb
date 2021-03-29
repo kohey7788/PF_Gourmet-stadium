@@ -1,6 +1,21 @@
-<%= @stadium.name %>
-<%= @stadium.address %>
-<%= attachment_image_tag @stadium, :image, format: "jpg" %>
-
-<%= link_to "一覧画面へ" , admin_stadiums_path %>
-<%= link_to "編集画面へ", edit_admin_stadium_path(@stadium) %>
+<div class="container pt-5">
+  <div class="row">
+    <table class="table">
+      <tr>
+        <th>スタジアム名</th>
+        <td><%= @stadium.name %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= @stadium.address %></td>
+      </tr>
+      <tr>
+        <th>写真</th>
+        <td> <%= attachment_image_tag @stadium, :image, format: "jpg" %></td>
+      </tr>
+    </table>
+  <div class="row">
+    <%= link_to "一覧画面へ" , admin_stadiums_path, class: "btn btn-primary" %>
+    <%= link_to "編集画面へ", edit_admin_stadium_path(@stadium), class: "btn btn-success" %>
+  </div>
+</div>

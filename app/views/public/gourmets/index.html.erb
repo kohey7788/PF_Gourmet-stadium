@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container pt-5">
   <div class="row">
     <%= search_form_for @q do |f| %>
-    <%= f.label :name, "Keyword" %>
+    <%= f.label :name, "キーワード" %>
     <%= f.search_field :name_cont %>
     <%= f.label :stadium, "スタジアム" %>
     <%= f.collection_select :stadium_id_eq, @stadiums, :id, :name, :include_blank => '指定なし' %>
@@ -24,7 +24,7 @@
         <tbody>
           <% @gourmets.each do |gourmet| %>
           <tr>
-            <td><%= link_to gourmet.name, gourmet_path(gourmet) %></td>
+            <td><%= link_to gourmet.name, gourmet_path(gourmet), class: "btn btn-outline-secondary text-dark bg-light" %></td>
             <td><%= attachment_image_tag gourmet, :image, format: "jpg", size: "350x200" %></td>
             <td>♥<%= gourmet.favorites.count %></td>
             <td><%= gourmet.stadium.name %></td>

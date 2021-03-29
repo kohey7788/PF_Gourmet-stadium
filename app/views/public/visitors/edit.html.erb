@@ -1,30 +1,34 @@
+<div class="container pt-5">
 <%= form_with model: [ :public, @visitor ], url: visitor_path, local:true do |f| %>
-  <table class="table">
-    <tr>
-      <th><%= f.label :"名前" %></th>
-      <td><%= f.text_field :name %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :"性別" %></th>
-      <td>
-        <label><%= f.radio_button :gender, "false" %>男性</label>
-        <label><%= f.radio_button :gender, "true" %>女性</label>
-      </td>
-    </tr>
-    <tr>
-      <th><%= f.label :"年齢" %></th>
-      <td><%= f.select :age, Visitor.ages.keys.map {|k| [I18n.t("enums.visitor.age.#{k}"), k]}, prompt: "年齢を選択してください" %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :"推し飯" %></th>
-      <td><%= f.text_field :favorite_food %></td>
-    </tr>
-    <tr>
-      <th> <%= f.label :"自己紹介" %></th>
-      <td><%= f.text_area :introduction, cols: '60',rows:'5' %></td>
-    </tr>
-  </table>
+  <div class="row">
+    <table class="table">
+      <tr>
+        <th><%= f.label :"名前" %></th>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :"性別" %></th>
+        <td>
+          <label><%= f.radio_button :gender, "false" %>男性</label>
+          <label><%= f.radio_button :gender, "true" %>女性</label>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :"年齢" %></th>
+        <td><%= f.select :age, Visitor.ages.keys.map {|k| [I18n.t("enums.visitor.age.#{k}"), k]}, prompt: "年齢を選択してください" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :"推し飯" %></th>
+        <td><%= f.text_field :favorite_food %></td>
+      </tr>
+      <tr>
+        <th> <%= f.label :"自己紹介" %></th>
+        <td><%= f.text_area :introduction, cols: '60',rows:'5' %></td>
+      </tr>
+    </table>
+  </div>
   <div class="actions">
     <%= f.submit class: "btn btn-success" %>
   </div>
 <% end %>
+</div>
