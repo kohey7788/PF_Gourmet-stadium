@@ -1,4 +1,28 @@
-<% @visitors.each do |visitor| %>
-<%= link_to visitor.name, admin_visitor_path(visitor) %>
-<%= visitor.gender %>
-<% end %>
+<div class="container pt-5">
+  <div class="row bg-light">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>名前</th>
+          <th>年齢</th>
+          <th>性別</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @visitors.each do |visitor| %>
+        <tr>
+          <td><%= link_to visitor.name, admin_visitor_path(visitor) %></td>
+          <td><%= visitor.age_i18n %></td>
+          <td>
+            <% if visitor.gender == false %>
+            男性
+            <% else %>
+            女性
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

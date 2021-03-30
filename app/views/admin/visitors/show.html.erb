@@ -1,0 +1,34 @@
+<div class="container pt-5">
+  <div class="row bg-light">
+    <div class="col-md-10">
+      <table class="table">
+        <tr>
+          <th>名前</th>
+          <td><%= @visitor.name %></td>
+        </tr>
+        <tr>
+          <th>性別</th>
+          <td>
+            <% if @visitor.gender == false %>
+            男性
+            <% else %>
+            女性
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>年齢</th>
+          <td><%= @visitor.age_i18n %></td>
+        </tr>
+        <tr>
+          <th>推し飯</th>
+          <td><%= @visitor.favorite_food %></td>
+        </tr>
+        <tr>
+          <th>自己紹介</th>
+          <td><%= @visitor.introduction %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
