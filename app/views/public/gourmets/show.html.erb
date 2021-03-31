@@ -1,29 +1,40 @@
 <div class="container pt-5">
   <h2><%= @gourmet.name %></h2>
-  <div class="row">
-    <table class="table table-borderless">
-      <tr>
-        <td><%= attachment_image_tag @gourmet, :image, format: "jpg", size: "350x200" %></td>
-        <td class="border bg-light"><%= @gourmet.introduction %></td>
-
-        <td class="bg-light">
-          <% if @gourmet.favorited_by?(current_visitor) %>
-            <p>
-              <%= link_to gourmet_favorites_path(@gourmet), method: :delete do %>
-                ♥<%= @gourmet.favorites.count %> いいね
-              <% end %>
-            </p>
-            <% else %>
-            <p>
-              <%= link_to gourmet_favorites_path(@gourmet), method: :post do %>
-                ♡<%= @gourmet.favorites.count %> いいね
-              <% end %>
-            </p>
+  <div class="row bg-light">
+    <div class="col-md-6"><%= attachment_image_tag @gourmet, :image, format: "jpg", size: "350x200" %></div>
+    <div class="col-md-6"><%= @gourmet.introduction %></div>
+  </div>
+  <div class="row bg-light">
+    <div class="col-md-5">
+      <% if @gourmet.favorited_by?(current_visitor) %>
+        <p>
+          <%= link_to gourmet_favorites_path(@gourmet), method: :delete do %>
+            <i class="fas fa-heart like-btn" ></i><%= @gourmet.favorites.count %> いいね
           <% end %>
-          <%= @gourmet.stadium.name %>
-        </td>
-      </tr>
-    </table>
+        </p>
+        <% else %>
+        <p>
+          <%= link_to gourmet_favorites_path(@gourmet), method: :post do %>
+            <i class="fas fa-heart unlike-btn" ></i><%= @gourmet.favorites.count %> いいね
+          <% end %>
+        </p>
+      <% end %>
+      <table>
+        <tr>
+          <th>スタジアム名</th>
+          <td><%= @gourmet.stadium.name %></td>
+        </tr>
+        <tr>
+          <th>スタジアム住所</th>
+          <td><%= @gourmet.stadium.address %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <% if @gourmet.visitor == current_visitor %>
+      <%= link_to "削除", gourmet_path(@gourmet), method: :delete,data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
+    <% end %>
   </div>
   <div class="row mt-5">
     <%= form_with(model: @gourmet_comment, url:  gourmet_gourmet_comments_path(@gourmet.id), local: true) do |f| %>
@@ -31,7 +42,7 @@
     <%= f.submit "送信する" %>
     <% end %>
   </div>
-  <div class="row">
+  <div class="row bg-light mt-5">
     <p>コメント件数：<%= @gourmet.gourmet_comments.count %></p>
   </div>
   <div class="row bg-light">
@@ -41,6 +52,11 @@
           <td><%= gourmet_comment.created_at.strftime('%Y/%m/%d') %></td>
           <td><%= link_to gourmet_comment.visitor.name, visitor_path(gourmet_comment.visitor) %></td>
           <td><%= gourmet_comment.comment %></td>
+          <td>
+            <% if gourmet_comment.visitor == current_visitor %>
+              <%= link_to '削除する', gourmet_gourmet_comment_path(gourmet_comment.gourmet, gourmet_comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger"%>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </table>

@@ -1,4 +1,4 @@
-class Admin::GourmetsController < ApplicationController
+class Admin::GourmetsController < Admin::ApplicationController
   def index
     @gourmets = Gourmet.all
   end
@@ -7,8 +7,9 @@ class Admin::GourmetsController < ApplicationController
     @gourmet = Gourmet.find(params[:id])
   end
 
-  def destroy
-    @gourmet = Gormet.find(params[:id])
-    @gourmet.destroy
-  end
+  # def destroy
+  #   @gourmet = Gormet.find(params[:id])
+  #   @gourmet.destroy
+  # end
+
 end

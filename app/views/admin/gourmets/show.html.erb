@@ -16,7 +16,7 @@
 
   <div class="row">
     <p>コメント件数：<%= @gourmet.gourmet_comments.count %></p>
-    <table class="table">
+    <table class="table bg-light">
       <% @gourmet.gourmet_comments.each do |gourmet_comment| %>
         <tr>
           <td><%= gourmet_comment.created_at.strftime('%Y/%m/%d') %></td>

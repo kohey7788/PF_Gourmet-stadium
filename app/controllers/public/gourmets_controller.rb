@@ -29,6 +29,7 @@ class Public::GourmetsController < ApplicationController
   def destroy
     @gourmet = Gourmet.find(params[:id])
     @gourmet.destroy
+    redirect_to gourmets_path
   end
 
   private

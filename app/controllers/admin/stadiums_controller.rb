@@ -1,4 +1,4 @@
-class Admin::StadiumsController < ApplicationController
+class Admin::StadiumsController < Admin::ApplicationController
   def new
     @stadium = Stadium.new
   end

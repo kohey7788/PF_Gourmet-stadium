@@ -15,20 +15,7 @@
         <%= link_to "ぐるスタ", root_path, class: "navbar-brand text-white mr-5" %>
         <div class="collapse navbar-collapse">
         <ul class="navbar-nav">
-          <% if visitor_signed_in? %>
-            <li class=“nav-item”>
-              <%= link_to "マイページ", visitor_path(current_visitor), class: 'mr-5 ml-5 nav-link btn btn-outline-secondary text-white' %>
-            </li>
-            <li class=“nav-item”>
-              <%= link_to "新規投稿", new_gourmet_path, class: 'mr-5 nav-link btn btn-outline-secondary text-white' %>
-            </li>
-            <li class=“nav-item”>
-              <%= link_to "グルメ一覧", gourmets_path, class: 'mr-5 nav-link btn btn-outline-secondary text-white' %>
-            </li>
-            <li class=“nav-item”>
-              <%= link_to "ログアウト", destroy_visitor_session_path, method: :delete, class: 'mr-5 nav-link btn btn-outline-secondary text-white' %>
-            </li>
-          <% elsif admin_signed_in? %>
+          <% if admin_signed_in? %>
             <li class=“nav-item”>
               <%= link_to "スタジアム一覧", admin_stadiums_path, class: 'mr-5 ml-5 nav-link btn btn-outline-secondary text-white' %>
             </li>
@@ -40,6 +27,19 @@
             </li>
             <li class=“nav-item”>
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'mr-5 nav-link btn btn-outline-secondary text-white' %>
+            </li>
+          <% elsif visitor_signed_in? %>
+            <li class=“nav-item”>
+              <%= link_to "マイページ", visitor_path(current_visitor), class: 'mr-5 ml-5 nav-link btn btn-outline-secondary text-white' %>
+            </li>
+            <li class=“nav-item”>
+              <%= link_to "新規投稿", new_gourmet_path, class: 'mr-5 nav-link btn btn-outline-secondary text-white' %>
+            </li>
+            <li class=“nav-item”>
+              <%= link_to "グルメ一覧", gourmets_path, class: 'mr-5 nav-link btn btn-outline-secondary text-white' %>
+            </li>
+            <li class=“nav-item”>
+              <%= link_to "ログアウト", destroy_visitor_session_path, method: :delete, class: 'mr-5 nav-link btn btn-outline-secondary text-white' %>
             </li>
           <% else %>
             <li class=“nav-item”>
