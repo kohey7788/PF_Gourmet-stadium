@@ -1,46 +1,52 @@
 <h2>新規登録</h2>
 <div class="container">
+  <% if @visitor.errors.any? %>
+  <%= @visitor.errors.count %>件のエラーが発生しました
+  <% @visitor.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+  <% end %>
 <%= form_with model: @visitor, url: visitor_registration_path, id: 'new_visitor', class: 'new_visitor', local: true do |f| %>
-  <%= render "visitors/shared/error_messages", resource: resource %>
+  <!--<= render "visitors/shared/error_messages", resource: resource %>-->
   <table class="table table-borderless">
     <tr>
-      <th><%= f.label :email %></th>
+      <th><%= f.label :"メールアドレス（必須）" %></th>
       <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
     </tr>
     <tr>
       <th>
-        <%= f.label :password %>
+        <%= f.label :"パスワード（必須）" %>
         <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <em>(<%= @minimum_password_length %>文字以上)</em>
         <% end %>
       </th>
       <td><%= f.password_field :password, autocomplete: "new-password" %></td>
     </tr>
     <tr>
-      <th><%= f.label :password_confirmation %></th>
+      <th><%= f.label :"パスワード（確認）" %></th>
       <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
     </tr>
     <tr>
-      <th><%= f.label :name %></th>
+      <th><%= f.label :"名前（必須）" %></th>
       <td><%= f.text_field :name %></td>
     </tr>
     <tr>
-      <th><%= f.label :gender %></th>
+      <th><%= f.label :"性別（必須）" %></th>
       <td>
         <label><%= f.radio_button :gender, "false" %>男性</label>
         <label><%= f.radio_button :gender, "true" %>女性</label>
       </td>
     </tr>
     <tr>
-      <th><%= f.label :age %></th>
+      <th><%= f.label :"年齢（必須）" %></th>
       <td><%= f.select :age, Visitor.ages.keys.map {|k| [I18n.t("enums.visitor.age.#{k}"), k]} %></td>
     </tr>
     <tr>
-      <th><%= f.label :favorite_food %></th>
+      <th><%= f.label :"推し飯" %></th>
       <td><%= f.text_field :favorite_food %></td>
     </tr>
     <tr>
-      <th><%= f.label :introduction %></th>
+      <th><%= f.label :"自己紹介" %></th>
       <td><%= f.text_area :introduction, cols: '60',rows:'5' %></td>
     </tr>
   </table>

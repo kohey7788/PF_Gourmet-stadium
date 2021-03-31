@@ -1,4 +1,10 @@
 <div class="container pt-5">
+  <% if @stadium.errors.any? %>
+  <%= @stadium.errors.count %>件のエラーが発生しました
+  <% @stadium.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+  <% end %>
   <%= form_with model:[ :admin, @stadium ], local:true do |f| %>
   <div class="row">
     <table class="table">
@@ -12,7 +18,9 @@
       </tr>
       <tr>
         <th><%= f.label :"画像" %></th>
-        <td><%= attachment_image_tag @stadium, :image, format: "jpg", size: "350x200" %></td>
+        <td>
+          <%= f.file_field :image %>
+          <%= attachment_image_tag @stadium, :image, format: "jpg", size: "350x200" %></td>
       </tr>
     </table>
   </div>

@@ -8,6 +8,9 @@ class Visitor < ApplicationRecord
   has_many :gourmet_comments,dependent: :destroy
   has_many :favorites,dependent: :destroy
 
+  validates :name, presence: true
+  # validates :gender, presence: true
+
   enum age:{
     teenagers:   0, #10代
     twenties:    1, #20代

@@ -7,9 +7,11 @@ class Public::GourmetsController < ApplicationController
   def create
     @gourmet = Gourmet.new(gourmet_params)
     @gourmet.visitor = current_visitor
+    # binding.pry
     if @gourmet.save
       redirect_to gourmets_path
     else
+      @stadiums = Stadium.all
       render "new"
     end
   end

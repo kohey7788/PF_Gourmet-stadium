@@ -1,4 +1,10 @@
 <div class="container pt-5">
+  <% if @stadium.errors.any? %>
+  <%= @stadium.errors.count %>件のエラーが発生しました
+  <% @stadium.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+  <% end %>
   <%= form_with model:[ :admin, @stadium ], local:true do |f| %>
   <div class="row">
     <table class="table table-borderless">

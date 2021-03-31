@@ -36,24 +36,23 @@ ActiveRecord::Schema.define(version: 2021_03_21_125201) do
     t.integer "gourmet_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "comment"
+    t.string "comment", default: "", null: false
   end
 
   create_table "gourmets", force: :cascade do |t|
-    t.integer "visitor_id"
-    t.integer "stadium_id"
-    t.string "name"
+    t.integer "visitor_id", null: false
+    t.integer "stadium_id", null: false
+    t.string "name", null: false
     t.string "image_id"
-    t.string "favorite_food"
-    t.text "introduction"
+    t.text "introduction", null: false
     t.integer "favorites_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "stadiums", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
+    t.string "name", null: false
+    t.string "address", null: false
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
