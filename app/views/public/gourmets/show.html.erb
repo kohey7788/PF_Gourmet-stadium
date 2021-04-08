@@ -6,19 +6,11 @@
   </div>
   <div class="row bg-light">
     <div class="col-md-5">
-      <% if @gourmet.favorited_by?(current_visitor) %>
-        <p>
-          <%= link_to gourmet_favorites_path(@gourmet), method: :delete do %>
-            <i class="fas fa-heart like-btn" ></i><%= @gourmet.favorites.count %> いいね
-          <% end %>
-        </p>
-        <% else %>
-        <p>
-          <%= link_to gourmet_favorites_path(@gourmet), method: :post do %>
-            <i class="fas fa-heart unlike-btn" ></i><%= @gourmet.favorites.count %> いいね
-          <% end %>
-        </p>
-      <% end %>
+
+      <div id="favorites_buttons_<%= @gourmet.id %>">
+        <%= render 'public/favorites/favorite', gourmet: @gourmet %>
+      </div>
+
       <table>
         <tr>
           <th>スタジアム名</th>
