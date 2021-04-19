@@ -18,7 +18,8 @@ class Public::GourmetsController < ApplicationController
 
   def index
     @q = Gourmet.ransack(params[:q])
-    @gourmets = @q.result(distinct: true)
+    @gourmets = @q.result(distinct: true).page(params[:page]).per(5)
+    # @gourmets = Gourmet.page(params[:page]).per(5)
     @stadiums = Stadium.all
     # @gourmets_all = Gourmet.all
   end

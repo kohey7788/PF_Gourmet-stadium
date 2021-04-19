@@ -13,7 +13,7 @@ class Admin::StadiumsController < Admin::ApplicationController
   end
 
   def index
-    @stadiums = Stadium.all
+    @stadiums = Stadium.all.page(params[:page]).per(10)
   end
 
   def show

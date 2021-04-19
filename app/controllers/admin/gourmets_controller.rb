@@ -1,6 +1,6 @@
 class Admin::GourmetsController < Admin::ApplicationController
   def index
-    @gourmets = Gourmet.all
+    @gourmets = Gourmet.all.page(params[:page]).per(5)
   end
 
   def show
