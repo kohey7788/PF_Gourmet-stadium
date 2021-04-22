@@ -26,6 +26,10 @@
 スタジアムで食べた物の美味しさを共有したい時に
 
 ## 設計書
+*WBS　https://docs.google.com/spreadsheets/d/1qdd39N5BLTFOAV0pa3ZdvrCpjhTvGBi4k2W7TzrY1og/edit#gid=977420151
+*テーブル定義書　https://docs.google.com/spreadsheets/d/1580SYbKqEe7NvXa8ZVr87ZgDQi9sv4s-uDtYFJRdeqI/edit#gid=0
+*ER図　https://app.diagrams.net/#G1qkvIMwk7k96HMrwa2CrwmLvz-9wvKuri
+*アプリケーション詳細設計　https://docs.google.com/spreadsheets/d/1_UMeprhOclp_iJXzMoTR1y7ldocN2Tw5dtSc1Yj-NP8/edit#gid=632818942
 
 ## チャレンジ要素一覧
 
