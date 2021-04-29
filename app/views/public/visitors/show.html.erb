@@ -33,7 +33,9 @@
   </div>
 
   <div class="row">
+    <% if @visitor.id == current_visitor.id %>
     <%= link_to "編集画面へ", edit_visitor_path(@visitor), class: "btn btn-success mt-5" %>
+    <% end %>
   </div>
 </div>
 

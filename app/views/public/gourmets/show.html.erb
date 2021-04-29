@@ -28,12 +28,14 @@
       <%= link_to "削除", gourmet_path(@gourmet), method: :delete,data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
     <% end %>
   </div>
+  <% if visitor_signed_in? %>
   <div class="row mt-5">
     <%= form_with(model: @gourmet_comment, url:  gourmet_gourmet_comments_path(@gourmet.id), local: true) do |f| %>
     <%= f.text_area :comment, cols: '60',rows:'5',placeholder: "コメントをここに" %>
     <%= f.submit "送信する" %>
     <% end %>
   </div>
+  <% end %>
   <div class="row bg-light mt-5">
     <p>コメント件数：<%= @gourmet.gourmet_comments.count %></p>
   </div>

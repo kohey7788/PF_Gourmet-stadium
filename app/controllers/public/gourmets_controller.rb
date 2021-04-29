@@ -1,4 +1,6 @@
 class Public::GourmetsController < ApplicationController
+before_action :authenticate_visitor!, only: [:new]
+
   def new
     @gourmet = Gourmet.new
     @stadiums = Stadium.all

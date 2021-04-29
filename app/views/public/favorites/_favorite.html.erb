@@ -1,13 +1,17 @@
-<% if gourmet.favorited_by?(current_visitor) %>
-  <p>
-    <%= link_to gourmet_favorites_path(gourmet.id), method: :delete, remote: true do %>
-      <i class="fas fa-heart like-btn" ></i><%= gourmet.favorites.count %> いいね
-    <% end %>
-  </p>
-  <% else %>
-  <p>
-    <%= link_to gourmet_favorites_path(gourmet.id), method: :post, remote: true do %>
-      <i class="fas fa-heart unlike-btn" ></i><%= gourmet.favorites.count %> いいね
-    <% end %>
-  </p>
+<% if visitor_signed_in? %>
+  <% if gourmet.favorited_by?(current_visitor) %>
+    <p>
+      <%= link_to gourmet_favorites_path(gourmet.id), method: :delete, remote: true do %>
+        <i class="fas fa-heart like-btn" ></i><%= gourmet.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to gourmet_favorites_path(gourmet.id), method: :post, remote: true do %>
+        <i class="fas fa-heart unlike-btn" ></i><%= gourmet.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
+<% else %>
+  <i class="fas fa-heart like-btn" ></i><%= gourmet.favorites.count %> いいね
 <% end %>

@@ -1,7 +1,7 @@
 class Admin::ApplicationController < ActionController::Base
   layout 'layouts/application'
-  
-  before_action :login_check, only: [:index, :show]
+
+  before_action :login_check, only: [:index, :show, :new, :edit]
 
   private
     def login_check

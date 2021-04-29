@@ -1,4 +1,7 @@
 class Public::VisitorsController < ApplicationController
+  before_action :authenticate_visitor!
+  before_action :correct_visitor,only: [:edit]
+
   def show
     @visitor = Visitor.find(params[:id])
   end
@@ -19,5 +22,12 @@ class Public::VisitorsController < ApplicationController
   private
   def visitor_params
     params.require(:visitor).permit(:name, :gender, :age, :favorite_food, :introduction)
+  end
+
+  def correct_visitor
+        @visitor = Visitor.find(params[:id])
+    unless @visitor.id == current_visitor.id
+      redirect_to gourmets_path
+    end
   end
 end
