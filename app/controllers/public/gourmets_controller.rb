@@ -19,9 +19,14 @@ before_action :authenticate_visitor!, only: [:new]
   end
 
   def index
+    if params[:q].present?
     @q = Gourmet.ransack(params[:q])
     @gourmets = @q.result(distinct: true).page(params[:page]).per(5)
-    # @gourmets = Gourmet.page(params[:page]).per(5)
+    else
+    params[:q] = { sorts: 'created_at desc' }
+    @q = Gourmet.ransack(params[:q])
+    @gourmets = @q.result(distinct: true).page(params[:page]).per(5)
+    end
     @stadiums = Stadium.all
     # @gourmets_all = Gourmet.all
   end
