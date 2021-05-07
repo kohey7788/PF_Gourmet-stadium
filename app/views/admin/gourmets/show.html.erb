@@ -1,17 +1,33 @@
 <div class="container pt-5">
-  <h2><%= @gourmet.name %></h2>
-  <div class="row">
-    <table class="table table-borderless">
-      <tr>
-        <td><%= attachment_image_tag @gourmet, :image, format: "jpg", size: "350x200" %></td>
-        <td><%= @gourmet.introduction %></td>
+  <div class="card mb-3" style="max-width: 1040px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <%= attachment_image_tag @gourmet, :image, format: "jpg", size: "350x250" %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h3 class="card-title"><%= @gourmet.name %></h3>
+        <div class="card-text"><%= @gourmet.introduction %></div>
+        <div><i class="fas fa-heart like-btn" ></i><%= @gourmet.favorites.count %> いいね</div>
+        <table>
+          <tr>
+            <th>スタジアム名</th>
+            <td><%= @gourmet.stadium.name %></td>
+          </tr>
+          <tr>
+            <th>スタジアム住所</th>
+            <td><%= @gourmet.stadium.address %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  </div>
 
-        <td>
-          <%= @gourmet.favorites.count %> いいね</br>
-          <%= @gourmet.stadium.name %>
-        </td>
-      </tr>
-    </table>
+  <div class="row mt-5">
+    <% if @gourmet.visitor == current_visitor %>
+      <%= link_to "削除", gourmet_path(@gourmet), method: :delete,data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
+    <% end %>
   </div>
 
   <div class="row">
