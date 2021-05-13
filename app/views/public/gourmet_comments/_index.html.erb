@@ -1,20 +1,21 @@
+ <p>コメント件数：<%= gourmet_comments.count %></p>
  <table class="table">
-      <% gourmet.gourmet_comments.each do |gourmet_comment| %>
-        <tr>
-          <td><%= gourmet_comment.created_at.strftime('%Y/%m/%d') %></td>
-          <td><%= link_to gourmet_comment.visitor.name, visitor_path(gourmet_comment.visitor) %></td>
-          <td><%= gourmet_comment.comment %></td>
-          <td>
-            <% if gourmet_comment.visitor == current_visitor %>
-              <%= link_to '削除する', gourmet_gourmet_comment_path(gourmet_comment.gourmet, gourmet_comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger"%>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-    </table>
+  <% gourmet_comments.each do |gourmet_comment| %>
+    <tr>
+      <td><%= gourmet_comment.created_at.strftime('%Y/%m/%d') %></td>
+      <td><%= link_to gourmet_comment.visitor.name, visitor_path(gourmet_comment.visitor) %></td>
+      <td><%= gourmet_comment.comment %></td>
+      <td>
+        <% if gourmet_comment.visitor == current_visitor %>
+          <%= link_to '削除する', gourmet_gourmet_comment_path(gourmet_comment.gourmet, gourmet_comment), method: :delete, remote: true, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger"%>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+</table>

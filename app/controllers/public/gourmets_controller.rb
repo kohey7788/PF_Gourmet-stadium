@@ -34,6 +34,7 @@ before_action :authenticate_visitor!, only: [:new]
   def show
     @gourmet = Gourmet.find(params[:id])
     @gourmet_comment = GourmetComment.new
+    @gourmet_comments = @gourmet.gourmet_comments.order(created_at: :asc)
   end
 
   def destroy

@@ -33,17 +33,17 @@
   </div>
   <% if visitor_signed_in? %>
   <div class="row mt-5">
-    <div id="comments_forms_<%= @gourmet.id %>">
-      <%= render 'public/gourmet_comments/form', gourmet: @gourmet, goumet_comment: @gourmet_comment %>
-    </div>
+    <!--<div id="comments_forms_<%= @gourmet.id %>">-->
+      <%= render 'public/gourmet_comments/form', gourmet: @gourmet, gourmet_comments: @gourmet_comments %>
+    <!--</div>-->
   </div>
   <% end %>
   <div class="row bg-light mt-5">
-    <p>コメント件数：<%= @gourmet.gourmet_comments.count %></p>
+
   </div>
-  <div class="row bg-light">
-    <div id="comments_area_<%= @gourmet.id %>">
-      <%= render 'public/gourmet_comments/index', gourmet: @gourmet %>
-    </div>
+  <div id="comments_area" class="row bg-light">
+    <!--<div id="comments_area">-->
+      <%= render 'public/gourmet_comments/index', gourmet_comments: @gourmet_comments %>
+    <!--</div>-->
   </div>
 </div>
