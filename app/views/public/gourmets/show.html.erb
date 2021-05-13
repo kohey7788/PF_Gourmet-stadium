@@ -33,35 +33,17 @@
   </div>
   <% if visitor_signed_in? %>
   <div class="row mt-5">
-    <%= form_with(model: @gourmet_comment, url:  gourmet_gourmet_comments_path(@gourmet.id), local: true) do |f| %>
-    <%= f.text_area :comment, cols: '60',rows:'5',placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
-    <% end %>
+    <div id="comments_forms_<%= @gourmet.id %>">
+      <%= render 'public/gourmet_comments/form', gourmet: @gourmet, goumet_comment: @gourmet_comment %>
+    </div>
   </div>
   <% end %>
   <div class="row bg-light mt-5">
     <p>コメント件数：<%= @gourmet.gourmet_comments.count %></p>
   </div>
   <div class="row bg-light">
-    <table class="table">
-      <% @gourmet.gourmet_comments.each do |gourmet_comment| %>
-        <tr>
-          <td><%= gourmet_comment.created_at.strftime('%Y/%m/%d') %></td>
-          <td><%= link_to gourmet_comment.visitor.name, visitor_path(gourmet_comment.visitor) %></td>
-          <td><%= gourmet_comment.comment %></td>
-          <td>
-            <% if gourmet_comment.visitor == current_visitor %>
-              <%= link_to '削除する', gourmet_gourmet_comment_path(gourmet_comment.gourmet, gourmet_comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger"%>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-    </table>
+    <div id="comments_area_<%= @gourmet.id %>">
+      <%= render 'public/gourmet_comments/index', gourmet: @gourmet %>
+    </div>
   </div>
 </div>
