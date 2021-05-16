@@ -7,9 +7,10 @@ class Admin::GourmetsController < Admin::ApplicationController
     @gourmet = Gourmet.find(params[:id])
   end
 
-  # def destroy
-  #   @gourmet = Gormet.find(params[:id])
-  #   @gourmet.destroy
-  # end
+  def destroy
+    @gourmet = Gourmet.find(params[:id])
+    @gourmet.destroy
+    redirect_to admin_gourmets_path
+  end
 
 end

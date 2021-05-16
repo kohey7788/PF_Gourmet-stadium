@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :stadiums
     resources :visitors, only: [:index, :show]
-    resources :gourmets, only: [:index, :show] do
+    resources :gourmets, only: [:index, :show, :destroy] do
       resources :gourmet_comments, only: [:destroy]
     end
   end

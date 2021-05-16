@@ -23,6 +23,7 @@
     </div>
   </div>
   </div>
+  <%= link_to "削除", admin_gourmet_path(@gourmet), method: :delete,data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
 
   <div class="row mt-5">
     <% if @gourmet.visitor == current_visitor %>
