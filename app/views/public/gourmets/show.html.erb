@@ -33,7 +33,7 @@
   </div>
   <% if visitor_signed_in? %>
   <div class="row mt-5">
-    <!--<div id="comments_forms_<%= @gourmet.id %>">-->
+    <!--<div id="comments_forms_<= @gourmet.id %>">-->
       <%= render 'public/gourmet_comments/form', gourmet: @gourmet, gourmet_comments: @gourmet_comments %>
     <!--</div>-->
   </div>
@@ -42,8 +42,6 @@
 
   </div>
   <div id="comments_area" class="row bg-light">
-    <!--<div id="comments_area">-->
       <%= render 'public/gourmet_comments/index', gourmet_comments: @gourmet_comments %>
-    <!--</div>-->
   </div>
 </div>

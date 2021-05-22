@@ -18,7 +18,10 @@
       </tr>
       <tr>
         <th><%= f.label :"画像" %></th>
-        <td><%= f.file_field :image %></td>
+        <td>
+          <div class="float-left"><%= f.attachment_field :image, id: "image" %></div>
+          <div><%= attachment_image_tag @stadium, :image, class: "card img-square", fallback: "no_image.jpg", size: "450x300" %></div>
+        </td>
       </tr>
     </table>
   </div>
@@ -27,3 +30,20 @@
   </div>
   <% end %>
 </div>
+
+
+<script>
+$(function() {
+    $('#image').on('change', function() {
+        var selectedFile = this.files[0];
+        var fileReader = new FileReader();
+
+        fileReader.onload = function(event) {
+            var loadedImageUri = event.target.result;
+             $('.img-square').attr('src', loadedImageUri);
+        };
+
+        fileReader.readAsDataURL(selectedFile);
+    });
+});
+</script>
