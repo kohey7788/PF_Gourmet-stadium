@@ -1,4 +1,4 @@
-<h2>新規登録</h2>
+<h2 class="text-center pt-5 mb-5">新規登録</h2>
 <div class="container">
   <% if @visitor.errors.any? %>
   <%= @visitor.errors.count %>件のエラーが発生しました
@@ -7,7 +7,6 @@
   <% end %>
   <% end %>
 <%= form_with model: @visitor, url: visitor_registration_path, id: 'new_visitor', class: 'new_visitor', local: true do |f| %>
-  <!--<= render "visitors/shared/error_messages", resource: resource %>-->
   <table class="table table-borderless">
     <tr>
       <th><%= f.label :"メールアドレス（必須）" %></th>
@@ -50,8 +49,8 @@
       <td><%= f.text_area :introduction, cols: '60',rows:'5' %></td>
     </tr>
   </table>
-  <div class="actions">
-  <%= f.submit "新規登録", class: "btn btn-success"%>
+  <div class="actions row pb-5">
+  <%= f.submit "新規登録", class: "btn btn-success col-2 offset-5"%>
   </div>
 <% end %>
 </div>
