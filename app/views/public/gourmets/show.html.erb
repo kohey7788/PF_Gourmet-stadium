@@ -20,6 +20,10 @@
             <th>スタジアム住所</th>
             <td><%= @gourmet.stadium.address %></td>
           </tr>
+          <tr>
+            <th>投稿者</th>
+            <td><%= link_to @gourmet.visitor.name, visitor_path(@gourmet.visitor) %></td>
+          </tr>
         </table>
       </div>
     </div>
